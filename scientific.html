@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator — CalcPro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-calculator"></i>
+                <span class="site-title">Calc<span>Pro</span></span>
+                <span class="badge">Scientific</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="features.html" class="nav-link"><i class="fas fa-star"></i> Features</a></li>
+                <li><a href="howto.html" class="nav-link"><i class="fas fa-book-open"></i> How to Use</a></li>
+                <li><a href="basic.html" class="nav-link"><i class="fas fa-calculator"></i> Basic</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Calculator Section -->
+    <section class="calculator-page">
+        <div class="container">
+            <div class="calc-container">
+                <div class="calc-header">
+                    <h2><i class="fas fa-flask"></i> Scientific Calculator</h2>
+                    <p>Advanced functions for complex mathematical calculations</p>
+                </div>
+
+                <div class="calculator">
+                    <div class="calc-display-container">
+                        <div class="calc-expression" id="sci-expression"></div>
+                        <input type="text" id="sci-display" class="calc-display" readonly value="0">
+                    </div>
+                    
+                    <div class="calc-keys sci-keys">
+                        <!-- First Row -->
+                        <button class="calc-btn sci-btn" data-action="second">2nd</button>
+                        <button class="calc-btn sci-btn" data-action="pi">π</button>
+                        <button class="calc-btn sci-btn" data-action="e">e</button>
+                        <button class="calc-btn clear" data-action="clear">C</button>
+                        <button class="calc-btn clear" data-action="clear-entry">CE</button>
+
+                        <!-- Second Row -->
+                        <button class="calc-btn sci-btn" data-action="square">x²</button>
+                        <button class="calc-btn sci-btn" data-action="cube">x³</button>
+                        <button class="calc-btn sci-btn" data-action="power">x^y</button>
+                        <button class="calc-btn sci-btn" data-action="power-ten">10^x</button>
+                        <button class="calc-btn sci-btn" data-action="factorial">x!</button>
+
+                        <!-- Third Row -->
+                        <button class="calc-btn sci-btn" data-action="sqrt">√</button>
+                        <button class="calc-btn sci-btn" data-action="cbrt">∛</button>
+                        <button class="calc-btn sci-btn" data-action="log">log</button>
+                        <button class="calc-btn sci-btn" data-action="ln">ln</button>
+                        <button class="calc-btn sci-btn" data-action="exp">e^x</button>
+
+                        <!-- Fourth Row -->
+                        <button class="calc-btn sci-btn" data-action="sin">sin</button>
+                        <button class="calc-btn sci-btn" data-action="cos">cos</button>
+                        <button class="calc-btn sci-btn" data-action="tan">tan</button>
+                        <button class="calc-btn sci-btn" data-action="deg-rad">DEG</button>
+                        <button class="calc-btn sci-btn" data-action="hyp">hyp</button>
+
+                        <!-- Fifth Row -->
+                        <button class="calc-btn sci-btn" data-action="sinh">sinh</button>
+                        <button class="calc-btn sci-btn" data-action="cosh">cosh</button>
+                        <button class="calc-btn sci-btn" data-action="tanh">tanh</button>
+                        <button class="calc-btn sci-btn" data-action="parenthesis">(</button>
+                        <button class="calc-btn sci-btn" data-action="parenthesis-close">)</button>
+
+                        <!-- Sixth Row -->
+                        <button class="calc-btn" data-action="plus-minus">±</button>
+                        <button class="calc-btn" data-number="0">0</button>
+                        <button class="calc-btn" data-action="decimal">.</button>
+                        <button class="calc-btn operator" data-action="divide">÷</button>
+                        <button class="calc-btn operator" data-action="multiply">×</button>
+
+                        <!-- Seventh Row -->
+                        <button class="calc-btn" data-number="1">1</button>
+                        <button class="calc-btn" data-number="2">2</button>
+                        <button class="calc-btn" data-number="3">3</button>
+                        <button class="calc-btn operator" data-action="subtract">−</button>
+                        <button class="calc-btn operator" data-action="add">+</button>
+
+                        <!-- Eighth Row -->
+                        <button class="calc-btn" data-number="4">4</button>
+                        <button class="calc-btn" data-number="5">5</button>
+                        <button class="calc-btn" data-number="6">6</button>
+                        <button class="calc-btn sci-btn" data-action="mod">mod</button>
+                        <button class="calc-btn sci-btn" data-action="percent">%</button>
+
+                        <!-- Ninth Row -->
+                        <button class="calc-btn" data-number="7">7</button>
+                        <button class="calc-btn" data-number="8">8</button>
+                        <button class="calc-btn" data-number="9">9</button>
+                        <button class="calc-btn clear" data-action="backspace">⌫</button>
+                        <button class="calc-btn equals" data-action="calculate">=</button>
+                    </div>
+                </div>
+
+                <div class="calculator-features">
+                    <h3><i class="fas fa-star"></i> Advanced Functions</h3>
+                    <div class="features-list">
+                        <span><i class="fas fa-check"></i> Trigonometric functions (sin, cos, tan)</span>
+                        <span><i class="fas fa-check"></i> Hyperbolic functions (sinh, cosh, tanh)</span>
+                        <span><i class="fas fa-check"></i> Logarithmic functions (log, ln)</span>
+                        <span><i class="fas fa-check"></i> Exponential and power functions</span>
+                        <span><i class="fas fa-check"></i> Square root, cube root, and factorial</span>
+                        <span><i class="fas fa-check"></i> Constants (π, e)</span>
+                        <span><i class="fas fa-check"></i> Modulus and percentage</span>
+                        <span><i class="fas fa-check"></i> Complex expression evaluation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-calculator"></i>
+                    <span>CalcPro</span>
+                    <p>Advanced Multi Calculator Toolkit</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Calculators</h4>
+                        <a href="basic.html">Basic Calculator</a>
+                        <a href="scientific.html">Scientific Calculator</a>
+                        <a href="age.html">Age Calculator</a>
+                        <a href="bmi.html">BMI Calculator</a>
+                        <a href="interest.html">Interest Calculator</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="features.html">Features</a>
+                        <a href="howto.html">How to Use</a>
+                        <a href="index.html">Home</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="social-links">
+          <a href="https://www.instagram.com/sahaniabhisek311?igsh=MW1nNmE1MGpkdnY3ZA==" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/1A39yLUvhp/" class="social-link"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.linkedin.com/in/abhishek-sahani-447851341" class="social-link"><i class="fab fa-linkedin"></i></a> 
+        </div>
+                
+                <div class="footer-info">
+                    <p>&copy; CalcPro. All rights reserved. Built by Sahani Abhishek.</p>
+          <div class="contact-info">
+            <p><i class="fas fa-envelope footicon"></i> abhishek242443@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt footicon"></i> Mumbai, India</p>
+          </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

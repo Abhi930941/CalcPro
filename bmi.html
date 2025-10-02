@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>BMI Calculator — CalcPro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <i class="fas fa-calculator"></i>
+        <span class="site-title">Calc<span>Pro</span></span>
+        <span class="badge">BMI</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="features.html" class="nav-link"><i class="fas fa-star"></i> Features</a></li>
+        <li><a href="howto.html" class="nav-link"><i class="fas fa-book-open"></i> How to Use</a></li>
+        <li><a href="age.html" class="nav-link"><i class="fas fa-birthday-cake"></i> Age</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Calculator Section -->
+  <section class="calculator-page">
+    <div class="container">
+      <div class="calc-container">
+        <div class="calc-header">
+          <h2><i class="fas fa-weight-scale"></i> BMI Calculator</h2>
+          <p>Calculate your Body Mass Index and health category</p>
+        </div>
+
+        <div class="form-calculator">
+          <div class="unit-toggle">
+            <button class="unit-btn active" data-unit="metric">Metric (kg/cm)</button>
+            <button class="unit-btn" data-unit="imperial">Imperial (lbs/in)</button>
+          </div>
+
+          <!-- Metric Units -->
+          <div class="unit-section active" id="metric-section">
+            <div class="form-group">
+              <label for="weight-kg"><i class="fas fa-weight-hanging"></i> Weight (kg)</label>
+              <input type="number" id="weight-kg" class="form-input" placeholder="Enter weight in kilograms">
+            </div>
+
+            <div class="form-group">
+              <label for="height-cm"><i class="fas fa-ruler-vertical"></i> Height (cm)</label>
+              <input type="number" id="height-cm" class="form-input" placeholder="Enter height in centimeters">
+            </div>
+          </div>
+
+          <!-- Imperial Units -->
+          <div class="unit-section" id="imperial-section">
+            <div class="form-group">
+              <label for="weight-lbs"><i class="fas fa-weight-hanging"></i> Weight (lbs)</label>
+              <input type="number" id="weight-lbs" class="form-input" placeholder="Enter weight in pounds">
+            </div>
+
+            <div class="form-group">
+              <label for="height-ft"><i class="fas fa-ruler-vertical"></i> Height (feet)</label>
+              <input type="number" id="height-ft" class="form-input" placeholder="Feet">
+            </div>
+
+            <div class="form-group">
+              <label for="height-in"><i class="fas fa-ruler"></i> Height (inches)</label>
+              <input type="number" id="height-in" class="form-input" placeholder="Inches">
+            </div>
+          </div>
+
+          <button class="calculate-btn" id="calculate-bmi">
+            <i class="fas fa-calculator"></i> Calculate BMI
+          </button>
+
+          <div class="result-box" id="bmi-result" style="display: none;">
+            <h3><i class="fas fa-chart-line"></i> Your BMI Result</h3>
+            <div class="bmi-score">
+              <span class="bmi-value" id="bmi-value">0</span>
+              <span class="bmi-category" id="bmi-category">Category</span>
+            </div>
+            <div class="bmi-scale">
+              <div class="scale-bar">
+                <div class="scale-fill" id="scale-fill"></div>
+              </div>
+              <div class="scale-labels">
+                <span>Underweight</span>
+                <span>Normal</span>
+                <span>Overweight</span>
+                <span>Obese</span>
+              </div>
+            </div>
+            <div class="bmi-info" id="bmi-info"></div>
+          </div>
+        </div>
+
+        <div class="calculator-features">
+          <h3><i class="fas fa-star"></i> BMI Categories</h3>
+          <div class="bmi-categories">
+            <div class="category-item">
+              <span class="category-color underweight"></span>
+              <span class="category-range">Below 18.5</span>
+              <span class="category-name">Underweight</span>
+            </div>
+            <div class="category-item">
+              <span class="category-color normal"></span>
+              <span class="category-range">18.5 - 24.9</span>
+              <span class="category-name">Normal</span>
+            </div>
+            <div class="category-item">
+              <span class="category-color overweight"></span>
+              <span class="category-range">25 - 29.9</span>
+              <span class="category-name">Overweight</span>
+            </div>
+            <div class="category-item">
+              <span class="category-color obese"></span>
+              <span class="category-range">30 and above</span>
+              <span class="category-name">Obese</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <i class="fas fa-calculator"></i>
+          <span>CalcPro</span>
+          <p>Advanced Multi Calculator Toolkit</p>
+        </div>
+        
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Calculators</h4>
+            <a href="basic.html">Basic Calculator</a>
+            <a href="scientific.html">Scientific Calculator</a>
+            <a href="age.html">Age Calculator</a>
+            <a href="bmi.html">BMI Calculator</a>
+            <a href="interest.html">Interest Calculator</a>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <a href="features.html">Features</a>
+            <a href="howto.html">How to Use</a>
+            <a href="index.html">Home</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="social-links">
+          <a href="https://www.instagram.com/sahaniabhisek311?igsh=MW1nNmE1MGpkdnY3ZA==" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/1A39yLUvhp/" class="social-link"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.linkedin.com/in/abhishek-sahani-447851341" class="social-link"><i class="fab fa-linkedin"></i></a> 
+        </div>
+        
+        <div class="footer-info">
+          <p>&copy; CalcPro. All rights reserved. Built by Sahani Abhishek.</p>
+          <div class="contact-info">
+            <p><i class="fas fa-envelope footicon"></i> abhishek242443@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt footicon"></i> Mumbai, India</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

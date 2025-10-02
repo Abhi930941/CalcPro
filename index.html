@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>CalcPro — Ultra Multi Calculator</title>
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <i class="fas fa-calculator"></i>
+        <span class="site-title">Calc<span>Pro</span></span>
+        <span class="badge">AI</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="features.html" class="nav-link"><i class="fas fa-star"></i> Features</a></li>
+        <li><a href="howto.html" class="nav-link"><i class="fas fa-book-open"></i> How to Use</a></li>
+        <li><a href="basic.html" class="nav-link cta-button"><i class="fas fa-rocket"></i> Get Started</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="hero-background">
+      <div class="floating-element elem-1"></div>
+      <div class="floating-element elem-2"></div>
+      <div class="floating-element elem-3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span><i class="fas fa-bolt"></i> All-in-One Calculator Suite</span>
+      </div>
+      <h1 class="hero-title">Calculate <span class="gradient-text">Everything</span> with <span class="gradient-text">CalcPro</span></h1>
+      <p class="hero-subtitle">Advanced multi-calculator toolkit featuring Basic, Scientific, Age, BMI & Interest calculators in one beautiful interface.</p>
+      
+      <div class="hero-stats">
+        <div class="stat">
+          <i class="fas fa-calculator"></i>
+          <div>
+            <span class="stat-number">5+</span>
+            <span class="stat-label">Calculators</span>
+          </div>
+        </div>
+        <div class="stat">
+          <i class="fas fa-bolt"></i>
+          <div>
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Accuracy</span>
+          </div>
+        </div>
+        <div class="stat">
+          <i class="fas fa-palette"></i>
+          <div>
+            <span class="stat-number">2</span>
+            <span class="stat-label">Themes</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hero-buttons">
+        <a href="basic.html" class="primary-btn">
+          <i class="fas fa-calculator"></i>
+          Start Calculating Now
+        </a>
+        <a href="features.html" class="secondary-btn">
+          <i class="fas fa-play-circle"></i>
+          View Features
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Calculator Cards Grid -->
+  <section class="calculators-grid">
+    <div class="container">
+      <div class="section-header">
+        <h2>Choose Your Calculator</h2>
+        <p>Professional tools for every calculation need</p>
+      </div>
+      
+      <div class="calculator-cards">
+        <!-- Basic Calculator Card -->
+        <div class="calc-card">
+          <div class="card-icon">
+            <i class="fas fa-calculator"></i>
+          </div>
+          <h3>Basic Calculator</h3>
+          <p>Simple arithmetic operations with clean interface</p>
+          <div class="card-features">
+            <span><i class="fas fa-check"></i> Addition/Subtraction</span>
+            <span><i class="fas fa-check"></i> Multiplication/Division</span>
+            <span><i class="fas fa-check"></i> Percentage</span>
+          </div>
+          <a href="basic.html" class="card-btn">
+            <i class="fas fa-arrow-right"></i>
+            Open Calculator
+          </a>
+        </div>
+
+        <!-- Scientific Calculator Card -->
+        <div class="calc-card">
+          <div class="card-icon">
+            <i class="fas fa-flask"></i>
+          </div>
+          <h3>Scientific Calculator</h3>
+          <p>Advanced functions for complex calculations</p>
+          <div class="card-features">
+            <span><i class="fas fa-check"></i> Trigonometry</span>
+            <span><i class="fas fa-check"></i> Logarithms</span>
+            <span><i class="fas fa-check"></i> Power Functions</span>
+          </div>
+          <a href="scientific.html" class="card-btn">
+            <i class="fas fa-arrow-right"></i>
+            Open Calculator
+          </a>
+        </div>
+
+        <!-- Age Calculator Card -->
+        <div class="calc-card">
+          <div class="card-icon">
+            <i class="fas fa-birthday-cake"></i>
+          </div>
+          <h3>Age Calculator</h3>
+          <p>Calculate exact age in years, months, and days</p>
+          <div class="card-features">
+            <span><i class="fas fa-check"></i> Exact Age</span>
+            <span><i class="fas fa-check"></i> Months/Days</span>
+            <span><i class="fas fa-check"></i> Future Age</span>
+          </div>
+          <a href="age.html" class="card-btn">
+            <i class="fas fa-arrow-right"></i>
+            Open Calculator
+          </a>
+        </div>
+
+        <!-- BMI Calculator Card -->
+        <div class="calc-card">
+          <div class="card-icon">
+            <i class="fas fa-weight-scale"></i>
+          </div>
+          <h3>BMI Calculator</h3>
+          <p>Body Mass Index calculator with health categories</p>
+          <div class="card-features">
+            <span><i class="fas fa-check"></i> BMI Score</span>
+            <span><i class="fas fa-check"></i> Health Category</span>
+            <span><i class="fas fa-check"></i> Metric/Imperial</span>
+          </div>
+          <a href="bmi.html" class="card-btn">
+            <i class="fas fa-arrow-right"></i>
+            Open Calculator
+          </a>
+        </div>
+
+        <!-- Interest Calculator Card -->
+        <div class="calc-card">
+          <div class="card-icon">
+            <i class="fas fa-percent"></i>
+          </div>
+          <h3>Interest Calculator</h3>
+          <p>Simple and compound interest calculations</p>
+          <div class="card-features">
+            <span><i class="fas fa-check"></i> Simple Interest</span>
+            <span><i class="fas fa-check"></i> Compound Interest</span>
+            <span><i class="fas fa-check"></i> Total Amount</span>
+          </div>
+          <a href="interest.html" class="card-btn">
+            <i class="fas fa-arrow-right"></i>
+            Open Calculator
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Preview -->
+  <section class="features-preview">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Choose CalcPro?</h2>
+        <p>Professional features for the best calculation experience</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-palette"></i>
+          </div>
+          <h3>Beautiful UI</h3>
+          <p>Glass morphism design with smooth animations and gradients</p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-moon"></i>
+          </div>
+          <h3>Dark/Light Mode</h3>
+          <p>Toggle between themes with automatic preference saving</p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-mobile-screen"></i>
+          </div>
+          <h3>Responsive Design</h3>
+          <p>Works perfectly on desktop, tablet, and mobile devices</p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>Fast & Accurate</h3>
+          <p>Instant calculations with 100% mathematical accuracy</p>
+        </div>
+      </div>
+      
+      <div class="cta-section">
+        <h2>Ready to Calculate Like a Pro?</h2>
+        <p>Join thousands of users who trust CalcPro for their daily calculations</p>
+        <div class="cta-buttons">
+          <a href="basic.html" class="primary-btn">
+            <i class="fas fa-calculator"></i>
+            Start Calculating
+          </a>
+          <a href="howto.html" class="secondary-btn">
+            <i class="fas fa-info-circle"></i>
+            Learn More
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <i class="fas fa-calculator"></i>
+          <span>CalcPro</span>
+          <p>Advanced Multi Calculator Toolkit</p>
+        </div>
+        
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Calculators</h4>
+            <a href="basic.html">Basic Calculator</a>
+            <a href="scientific.html">Scientific Calculator</a>
+            <a href="age.html">Age Calculator</a>
+            <a href="bmi.html">BMI Calculator</a>
+            <a href="interest.html">Interest Calculator</a>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <a href="features.html">Features</a>
+            <a href="howto.html">How to Use</a>
+            <a href="index.html">Home</a>
+          </div>
+          
+        
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="social-links">
+          <a href="https://www.instagram.com/sahaniabhisek311?igsh=MW1nNmE1MGpkdnY3ZA==" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/1A39yLUvhp/" class="social-link"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.linkedin.com/in/abhishek-sahani-447851341" class="social-link"><i class="fab fa-linkedin"></i></a>
+          
+        </div>
+        
+        <div class="footer-info">
+          <p>&copy; CalcPro. All rights reserved. Built by Sahani Abhishek.</p>
+          <div class="contact-info">
+            <p><i class="fas fa-envelope footicon"></i> abhishek242443@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt footicon"></i> Mumbai, India</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
