@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Features — CalcPro</title>
+  <title>Features — CalcPro Professional Calculator Suite</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
@@ -14,8 +14,7 @@
     <div class="nav-container">
       <div class="nav-brand">
         <i class="fas fa-calculator"></i>
-        <span class="site-title">Calc<span>Pro</span></span>
-        <span class="badge">Features</span>
+        <span class="site-title">Calc<span>Pro</span></span> 
       </div>
       <ul class="nav-menu">
         <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
@@ -33,187 +32,232 @@
 
   <!-- Features Hero -->
   <section class="features-hero">
-    <div class="container">
-      <h1><i class="fas fa-star"></i> CalcPro Features</h1>
-      <p>Discover the powerful features that make CalcPro the ultimate calculator toolkit</p>
+    <div class="features-hero-content">
+      <h1><i class="fas fa-star"></i> Powerful Features</h1>
+      <p>Discover what makes CalcPro the ultimate calculator toolkit for professionals and students</p>
     </div>
   </section>
 
-  <!-- Features Grid -->
-  <section class="features-detail">
+  <!-- Features Categories -->
+  <section class="features-categories">
     <div class="container">
-      <div class="features-categories">
-        <div class="category-tabs">
-          <button class="category-tab active" data-category="all">All Features</button>
-          <button class="category-tab" data-category="calculators">Calculators</button>
-          <button class="category-tab" data-category="ui">User Interface</button>
-          <button class="category-tab" data-category="advanced">Advanced</button>
-        </div>
-
-        <div class="features-grid">
-          <!-- Calculator Features -->
-          <div class="feature-card" data-category="calculators">
-            <div class="feature-icon">
-              <i class="fas fa-calculator"></i>
-            </div>
-            <h3>5+ Specialized Calculators</h3>
-            <p>Comprehensive suite including Basic, Scientific, Age, BMI, and Interest calculators</p>
-            <ul>
-              <li>Basic arithmetic operations</li>
-              <li>Advanced scientific functions</li>
-              <li>Age calculation in years/months/days</li>
-              <li>BMI with health categories</li>
-              <li>Simple & compound interest</li>
-            </ul>
-          </div>
-
-          <div class="feature-card" data-category="ui">
-            <div class="feature-icon">
-              <i class="fas fa-palette"></i>
-            </div>
-            <h3>Beautiful Glass Morphism UI</h3>
-            <p>Modern design with glass effects, smooth animations, and gradient backgrounds</p>
-            <ul>
-              <li>Glass morphism design elements</li>
-              <li>Smooth CSS animations</li>
-              <li>Gradient color schemes</li>
-              <li>Professional typography</li>
-            </ul>
-          </div>
-
-          <div class="feature-card" data-category="advanced">
-            <div class="feature-icon">
-              <i class="fas fa-moon"></i>
-            </div>
-            <h3>Dark/Light Mode</h3>
-            <p>Toggle between themes with automatic preference saving</p>
-            <ul>
-              <li>One-click theme switching</li>
-              <li>Automatic preference saving</li>
-              <li>Eye-friendly dark mode</li>
-              <li>System theme detection</li>
-            </ul>
-          </div>
-
-          <div class="feature-card" data-category="ui">
-            <div class="feature-icon">
-              <i class="fas fa-mobile-alt"></i>
-            </div>
-            <h3>Fully Responsive Design</h3>
-            <p>Perfect experience on all devices - desktop, tablet, and mobile</p>
-            <ul>
-              <li>Mobile-first design approach</li>
-              <li>Tablet-optimized layouts</li>
-              <li>Touch-friendly interfaces</li>
-              <li>Cross-browser compatibility</li>
-            </ul>
-          </div>
-
-          <div class="feature-card" data-category="advanced">
-            <div class="feature-icon">
-              <i class="fas fa-bolt"></i>
-            </div>
-            <h3>Fast & Accurate Calculations</h3>
-            <p>Instant results with 100% mathematical accuracy</p>
-            <ul>
-              <li>Real-time calculations</li>
-              <li>Precision mathematics</li>
-              <li>Error handling</li>
-              <li>Input validation</li>
-            </ul>
-          </div>
-
-          <div class="feature-card" data-category="calculators">
-            <div class="feature-icon">
-              <i class="fas fa-chart-bar"></i>
-            </div>
-            <h3>Visual Results & Charts</h3>
-            <p>Interactive charts and visual representations of results</p>
-            <ul>
-              <li>BMI scale visualization</li>
-              <li>Interest calculation charts</li>
-              <li>Progress indicators</li>
-              <li>Result breakdowns</li>
-            </ul>
-          </div>
-        </div>
+      <div class="section-header">
+        <h2>Explore Our Features</h2>
+        <p>Filter features by category to find exactly what you need</p>
+      </div>
+      
+      <div class="category-filter">
+        <button class="filter-btn active" data-category="all">All Features</button>
+        <button class="filter-btn" data-category="calculators">Calculators</button>
+        <button class="filter-btn" data-category="interface">Interface</button>
+        <button class="filter-btn" data-category="advanced">Advanced</button>
+        <button class="filter-btn" data-category="productivity">Productivity</button>
       </div>
 
-      <!-- Feature Comparison -->
-      <div class="feature-comparison">
-        <h2>Calculator Comparison</h2>
-        <div class="comparison-table">
-          <table>
-            <thead>
-              <tr>
-                <th>Feature</th>
-                <th>Basic Calculator</th>
-                <th>Scientific Calculator</th>
-                <th>Age Calculator</th>
-                <th>BMI Calculator</th>
-                <th>Interest Calculator</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Arithmetic Operations</td>
-                <td><i class="fas fa-check"></i></td>
-                <td><i class="fas fa-check"></i></td>
-                <td><i class="fas fa-times"></i></td>
-                <td><i class="fas fa-times"></i></td>
-                <td><i class="fas fa-times"></i></td>
-              </tr>
-              <tr>
-                <td>Advanced Functions</td>
-                <td><i class="fas fa-times"></i></td>
-                <td><i class="fas fa-check"></i></td>
-                <td><i class="fas fa-times"></i></td>
-                <td><i class="fas fa-times"></i></td>
-                <td><i class="fas fa-times"></i></td>
-              </tr>
-              <tr>
-                <td>Date Calculations</td>
-                <td><i class="fas fa-times"></i></td>
-                <td><i class="fas fa-times"></i></td>
-                <td><i class="fas fa-check"></i></td>
-                <td><i class="fas fa-times"></i></td>
-                <td><i class="fas fa-times"></i></td>
-              </tr>
-              <tr>
-                <td>Health Metrics</td>
-                <td><i class="fas fa-times"></i></td>
-                <td><i class="fas fa-times"></i></td>
-                <td><i class="fas fa-times"></i></td>
-                <td><i class="fas fa-check"></i></td>
-                <td><i class="fas fa-times"></i></td>
-              </tr>
-              <tr>
-                <td>Financial Calculations</td>
-                <td><i class="fas fa-times"></i></td>
-                <td><i class="fas fa-times"></i></td>
-                <td><i class="fas fa-times"></i></td>
-                <td><i class="fas fa-times"></i></td>
-                <td><i class="fas fa-check"></i></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- CTA Section -->
-      <div class="features-cta">
-        <h2>Ready to Experience CalcPro?</h2>
-        <p>Join thousands of users who trust CalcPro for their daily calculations</p>
-        <div class="cta-buttons">
-          <a href="basic.html" class="primary-btn">
+      <div class="features-grid">
+        <!-- Calculator Features -->
+        <div class="feature-card" data-category="calculators">
+          <div class="feature-card-icon">
             <i class="fas fa-calculator"></i>
-            Start Calculating Now
-          </a>
-          <a href="howto.html" class="secondary-btn">
-            <i class="fas fa-play-circle"></i>
-            Learn How to Use
-          </a>
+          </div>
+          <h3>5+ Specialized Calculators</h3>
+          <p>Comprehensive suite including Basic, Scientific, Age, BMI, and Interest calculators</p>
+          <ul class="feature-list">
+            <li>Basic arithmetic operations</li>
+            <li>Advanced scientific functions</li>
+            <li>Age calculation in years/months/days</li>
+            <li>BMI with health categories</li>
+            <li>Simple & compound interest</li>
+          </ul>
         </div>
+
+        <div class="feature-card" data-category="interface">
+          <div class="feature-card-icon">
+            <i class="fas fa-palette"></i>
+          </div>
+          <h3>Modern Professional Design</h3>
+          <p>Clean interface with smooth animations, gradients, and professional typography</p>
+          <ul class="feature-list">
+            <li>Professional color scheme</li>
+            <li>Smooth CSS animations</li>
+            <li>Gradient backgrounds</li>
+            <li>Consistent typography</li>
+            <li>Responsive layouts</li>
+          </ul>
+        </div>
+
+        <div class="feature-card" data-category="advanced">
+          <div class="feature-card-icon">
+            <i class="fas fa-moon"></i>
+          </div>
+          <h3>Dark/Light Mode</h3>
+          <p>Toggle between themes with automatic preference detection and saving</p>
+          <ul class="feature-list">
+            <li>One-click theme switching</li>
+            <li>Automatic preference saving</li>
+            <li>System theme detection</li>
+            <li>Eye-friendly dark mode</li>
+            <li>Consistent across all pages</li>
+          </ul>
+        </div>
+
+        <div class="feature-card" data-category="productivity">
+          <div class="feature-card-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Fully Responsive Design</h3>
+          <p>Perfect experience on all devices - desktop, tablet, and mobile</p>
+          <ul class="feature-list">
+            <li>Mobile-first design approach</li>
+            <li>Tablet-optimized layouts</li>
+            <li>Touch-friendly interfaces</li>
+            <li>Cross-browser compatibility</li>
+            <li>Fast loading times</li>
+          </ul>
+        </div>
+
+        <div class="feature-card" data-category="advanced">
+          <div class="feature-card-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>Fast & Accurate Calculations</h3>
+          <p>Instant results with 100% mathematical accuracy and precision</p>
+          <ul class="feature-list">
+            <li>Real-time calculations</li>
+            <li>Precision mathematics</li>
+            <li>Error handling</li>
+            <li>Input validation</li>
+            <li>Instant results</li>
+          </ul>
+        </div>
+
+        <div class="feature-card" data-category="calculators">
+          <div class="feature-card-icon">
+            <i class="fas fa-chart-bar"></i>
+          </div>
+          <h3>Visual Results & Charts</h3>
+          <p>Interactive charts and visual representations of calculation results</p>
+          <ul class="feature-list">
+            <li>BMI scale visualization</li>
+            <li>Interest calculation charts</li>
+            <li>Progress indicators</li>
+            <li>Result breakdowns</li>
+            <li>Color-coded categories</li>
+          </ul>
+        </div>
+
+        <div class="feature-card" data-category="productivity">
+          <div class="feature-card-icon">
+            <i class="fas fa-keyboard"></i>
+          </div>
+          <h3>Keyboard Support</h3>
+          <p>Full keyboard support for faster calculations and navigation</p>
+          <ul class="feature-list">
+            <li>Number key support</li>
+            <li>Operation shortcuts</li>
+            <li>Enter for equals</li>
+            <li>Escape to clear</li>
+            <li>Backspace support</li>
+          </ul>
+        </div>
+
+        <div class="feature-card" data-category="interface">
+          <div class="feature-card-icon">
+            <i class="fas fa-history"></i>
+          </div>
+          <h3>Calculation History</h3>
+          <p>Track and review your previous calculations with detailed history</p>
+          <ul class="feature-list">
+            <li>Previous calculations</li>
+            <li>Copy results</li>
+            <li>Clear history</li>
+            <li>Session memory</li>
+            <li>Export options</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Comparison -->
+  <section class="comparison-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Calculator Comparison</h2>
+        <p>See how our calculators compare in terms of features and capabilities</p>
+      </div>
+      
+      <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Basic</th>
+              <th>Scientific</th>
+              <th>Age</th>
+              <th>BMI</th>
+              <th>Interest</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="feature-name">Arithmetic Operations</td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="cross">×</span></td>
+              <td><span class="cross">×</span></td>
+              <td><span class="cross">×</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">Advanced Functions</td>
+              <td><span class="cross">×</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="cross">×</span></td>
+              <td><span class="cross">×</span></td>
+              <td><span class="cross">×</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">Date Calculations</td>
+              <td><span class="cross">×</span></td>
+              <td><span class="cross">×</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="cross">×</span></td>
+              <td><span class="cross">×</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">Health Metrics</td>
+              <td><span class="cross">×</span></td>
+              <td><span class="cross">×</span></td>
+              <td><span class="cross">×</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="cross">×</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">Financial Calculations</td>
+              <td><span class="cross">×</span></td>
+              <td><span class="cross">×</span></td>
+              <td><span class="cross">×</span></td>
+              <td><span class="cross">×</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">Visual Charts</td>
+              <td><span class="cross">×</span></td>
+              <td><span class="cross">×</span></td>
+              <td><span class="cross">×</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">Unit Conversion</td>
+              <td><span class="cross">×</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="cross">×</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="cross">×</span></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -247,17 +291,19 @@
         </div>
       </div>
       
-      <div class="footer-bottom">
-        <div class="social-links">
-          <a href="https://www.instagram.com/sahaniabhisek311?igsh=MW1nNmE1MGpkdnY3ZA==" class="social-link"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.facebook.com/share/1A39yLUvhp/" class="social-link"><i class="fab fa-facebook"></i></a>
-          <a href="https://www.linkedin.com/in/abhishek-sahani-447851341" class="social-link"><i class="fab fa-linkedin"></i></a> 
+     <div class="footer-bottom">
+        <div class="social-links">  
+          <a href="mailto:abhishek242443@gmail.com" class="social-link">
+               <i class="fas fa-envelope"></i>
+         </a>       
+          <a href="https://www.linkedin.com/in/abhishek-sahani-447851341" class="social-link">
+            <i class="fab fa-linkedin"></i>
+          </a>
         </div>
         
         <div class="footer-info">
-         <p>&copy; CalcPro. All rights reserved. Built by Sahani Abhishek.</p>
+          <p>&copy;  CalcPro. All rights reserved. Built by Sahani Abhishek.</p>
           <div class="contact-info">
-            <p><i class="fas fa-envelope footicon"></i> abhishek242443@gmail.com</p>
             <p><i class="fas fa-map-marker-alt footicon"></i> Mumbai, India</p>
           </div>
         </div>

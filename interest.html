@@ -7,6 +7,133 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Additional styles for interest calculator mobile optimization */
+    .interest-chart-container {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+    
+    #interestChart {
+      display: block;
+      max-width: 100%;
+      height: auto !important;
+      margin: 0 auto;
+    }
+    
+    @media (max-width: 768px) {
+      .interest-chart {
+        padding: 1rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+      }
+      
+      #interestChart {
+        width: 100% !important;
+        height: 180px !important;
+      }
+      
+      .interest-breakdown {
+        padding: 1rem;
+      }
+      
+      .result-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        padding: 0.75rem 0;
+      }
+      
+      .result-value {
+        font-size: 1.1rem;
+        color: var(--primary-color);
+      }
+      
+      .interest-type {
+        flex-direction: column;
+      }
+      
+      .interest-btn {
+        width: 100%;
+        padding: 1.2rem;
+      }
+      
+      .compound-options {
+        padding: 1rem;
+        background: var(--background-primary);
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        margin: 1rem 0;
+      }
+      
+      .time-inputs {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .form-input,
+      .calculate-btn {
+        padding: 1.2rem;
+        font-size: 1.1rem;
+      }
+      
+      .calculate-btn {
+        margin: 1.5rem 0;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      #interestChart {
+        height: 160px !important;
+      }
+      
+      .interest-chart {
+        padding: 0.75rem;
+        margin: 0.5rem 0;
+      }
+      
+      .result-item {
+        padding: 0.5rem 0;
+      }
+      
+      .result-label {
+        font-size: 0.95rem;
+      }
+      
+      .result-value {
+        font-size: 1.2rem;
+      }
+      
+      .form-input {
+        font-size: 1rem;
+        padding: 1rem;
+      }
+    }
+    
+    /* Print styles */
+    @media print {
+      .theme-toggle,
+      .hamburger,
+      .calculate-btn,
+      .interest-btn {
+        display: none !important;
+      }
+      
+      .result-box {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 2px solid #000 !important;
+      }
+      
+      #interestChart {
+        border: 1px solid #000 !important;
+        background: white !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation -->
@@ -15,7 +142,6 @@
       <div class="nav-brand">
         <i class="fas fa-calculator"></i>
         <span class="site-title">Calc<span>Pro</span></span>
-        <span class="badge">Interest</span>
       </div>
       <ul class="nav-menu">
         <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
@@ -37,7 +163,7 @@
       <div class="calc-container">
         <div class="calc-header">
           <h2><i class="fas fa-percent"></i> Interest Calculator</h2>
-          <p>Calculate simple and compound interest with detailed breakdown</p>
+          <p>Calculate simple and compound interest with detailed breakdown and responsive charts</p>
         </div>
 
         <div class="form-calculator">
@@ -48,19 +174,25 @@
 
           <div class="form-group">
             <label for="principal"><i class="fas fa-money-bill-wave"></i> Principal Amount (₹)</label>
-            <input type="number" id="principal" class="form-input" placeholder="Enter principal amount">
+            <input type="number" id="principal" class="form-input" placeholder="Enter principal amount" min="0" step="0.01">
           </div>
 
           <div class="form-group">
             <label for="rate"><i class="fas fa-chart-line"></i> Annual Interest Rate (%)</label>
-            <input type="number" id="rate" class="form-input" placeholder="Enter annual interest rate" step="0.01">
+            <input type="number" id="rate" class="form-input" placeholder="Enter annual interest rate" min="0" step="0.01">
           </div>
 
           <div class="form-group">
             <label for="time"><i class="fas fa-clock"></i> Time Period</label>
             <div class="time-inputs">
-              <input type="number" id="years" class="form-input" placeholder="Years">
-              <input type="number" id="months" class="form-input" placeholder="Months">
+              <div class="input-with-label">
+                <input type="number" id="years" class="form-input" placeholder="Years" min="0" max="100">
+                <small class="input-hint">Years</small>
+              </div>
+              <div class="input-with-label">
+                <input type="number" id="months" class="form-input" placeholder="Months" min="0" max="11">
+                <small class="input-hint">Months</small>
+              </div>
             </div>
           </div>
 
@@ -75,6 +207,7 @@
                 <option value="12">Monthly</option>
                 <option value="365">Daily</option>
               </select>
+              <small class="input-hint">How often interest is calculated</small>
             </div>
           </div>
 
@@ -101,9 +234,28 @@
                 <span class="result-label">Time Period:</span>
                 <span class="result-value" id="result-time">0 years</span>
               </div>
+              <div class="result-item">
+                <span class="result-label">Interest Type:</span>
+                <span class="result-value" id="result-type">Simple</span>
+              </div>
             </div>
             <div class="interest-chart">
-              <canvas id="interestChart" width="400" height="200"></canvas>
+              <div class="interest-chart-container">
+                <canvas id="interestChart" width="400" height="200"></canvas>
+              </div>
+              <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem; text-align: center;">
+                <i class="fas fa-info-circle"></i> Visual breakdown of principal vs interest amount
+              </p>
+            </div>
+            
+            <!-- Tips Section -->
+            <div class="additional-info" style="margin-top: 1.5rem; padding: 1rem; background: var(--background-secondary); border-radius: 10px; border: 1px solid var(--border-color);">
+              <h4 style="margin-bottom: 0.5rem; color: var(--text-primary); font-size: 1rem;">
+                <i class="fas fa-lightbulb"></i> Quick Insights
+              </h4>
+              <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;" id="interest-insight">
+                <!-- Insight will be populated by JavaScript -->
+              </p>
             </div>
           </div>
         </div>
@@ -114,7 +266,9 @@
             <span><i class="fas fa-check"></i> Simple interest calculation</span>
             <span><i class="fas fa-check"></i> Compound interest with different frequencies</span>
             <span><i class="fas fa-check"></i> Detailed breakdown of results</span>
-            <span><i class="fas fa-check"></i> Visual chart representation</span>
+            <span><i class="fas fa-check"></i> Responsive visual chart</span>
+            <span><i class="fas fa-check"></i> Mobile-optimized display</span>
+            <span><i class="fas fa-check"></i> Time period in years & months</span>
           </div>
         </div>
       </div>
@@ -150,17 +304,19 @@
         </div>
       </div>
       
-      <div class="footer-bottom">
-        <div class="social-links">
-          <a href="https://www.instagram.com/sahaniabhisek311?igsh=MW1nNmE1MGpkdnY3ZA==" class="social-link"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.facebook.com/share/1A39yLUvhp/" class="social-link"><i class="fab fa-facebook"></i></a>
-          <a href="https://www.linkedin.com/in/abhishek-sahani-447851341" class="social-link"><i class="fab fa-linkedin"></i></a> 
+    <div class="footer-bottom">
+        <div class="social-links">  
+          <a href="mailto:abhishek242443@gmail.com" class="social-link">
+               <i class="fas fa-envelope"></i>
+         </a>       
+          <a href="https://www.linkedin.com/in/abhishek-sahani-447851341" class="social-link">
+            <i class="fab fa-linkedin"></i>
+          </a>
         </div>
         
         <div class="footer-info">
           <p>&copy; CalcPro. All rights reserved. Built by Sahani Abhishek.</p>
           <div class="contact-info">
-            <p><i class="fas fa-envelope footicon"></i> abhishek242443@gmail.com</p>
             <p><i class="fas fa-map-marker-alt footicon"></i> Mumbai, India</p>
           </div>
         </div>
@@ -172,7 +328,119 @@
     <i class="fas fa-moon"></i>
   </button>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="js/script.js"></script>
+  <script>
+    // Additional mobile optimization for interest calculator
+    document.addEventListener('DOMContentLoaded', function() {
+      // Auto-format inputs for better mobile experience
+      const principalInput = document.getElementById('principal');
+      const rateInput = document.getElementById('rate');
+      const yearsInput = document.getElementById('years');
+      const monthsInput = document.getElementById('months');
+      
+      if (principalInput) {
+        principalInput.addEventListener('input', function() {
+          if (this.value.length > 10) {
+            this.value = this.value.slice(0, 10);
+          }
+        });
+      }
+      
+      if (rateInput) {
+        rateInput.addEventListener('input', function() {
+          if (this.value > 100) {
+            this.value = 100;
+          }
+        });
+      }
+      
+      if (yearsInput) {
+        yearsInput.addEventListener('input', function() {
+          if (this.value > 100) {
+            this.value = 100;
+          }
+          // Auto-calculate months when years change
+          if (this.value && monthsInput.value) {
+            const totalMonths = (parseInt(this.value) * 12) + parseInt(monthsInput.value);
+            if (totalMonths > 1200) { // 100 years in months
+              this.value = Math.floor(1200 / 12);
+              monthsInput.value = 1200 % 12;
+            }
+          }
+        });
+      }
+      
+      if (monthsInput) {
+        monthsInput.addEventListener('input', function() {
+          if (this.value >= 12) {
+            const extraYears = Math.floor(this.value / 12);
+            this.value = this.value % 12;
+            if (yearsInput) {
+              yearsInput.value = (parseInt(yearsInput.value) || 0) + extraYears;
+            }
+          }
+        });
+      }
+      
+      // Touch-friendly input highlighting
+      const formInputs = document.querySelectorAll('.form-input');
+      formInputs.forEach(input => {
+        input.addEventListener('touchstart', function() {
+          this.style.backgroundColor = 'var(--background-tertiary)';
+        });
+        
+        input.addEventListener('touchend', function() {
+          setTimeout(() => {
+            this.style.backgroundColor = '';
+          }, 200);
+        });
+      });
+      
+      // Prevent zoom on input focus for mobile
+      formInputs.forEach(input => {
+        input.addEventListener('focus', function() {
+          if (window.innerWidth <= 768) {
+            document.body.style.zoom = "100%";
+          }
+        });
+      });
+      
+      // Update insight text when calculation happens
+      const calculateBtn = document.getElementById('calculate-interest');
+      if (calculateBtn) {
+        calculateBtn.addEventListener('click', function() {
+          setTimeout(() => {
+            const insightElement = document.getElementById('interest-insight');
+            const principal = parseFloat(principalInput.value) || 0;
+            const rate = parseFloat(rateInput.value) || 0;
+            const years = parseFloat(yearsInput.value) || 0;
+            const months = parseFloat(monthsInput.value) || 0;
+            const time = years + (months / 12);
+            
+            if (insightElement && principal > 0 && rate > 0 && time > 0) {
+              const interestType = document.querySelector('.interest-btn.active').getAttribute('data-type');
+              let insight = '';
+              
+              if (interestType === 'simple') {
+                const yearlyInterest = (principal * rate) / 100;
+                insight = `With simple interest, you'll earn approximately ₹${yearlyInterest.toFixed(2)} per year.`;
+              } else {
+                const compounding = parseInt(document.getElementById('compounding').value) || 1;
+                let frequency = 'annually';
+                if (compounding === 12) frequency = 'monthly';
+                else if (compounding === 4) frequency = 'quarterly';
+                else if (compounding === 2) frequency = 'semi-annually';
+                else if (compounding === 365) frequency = 'daily';
+                
+                insight = `With compound interest calculated ${frequency}, your money grows faster over time due to interest on interest.`;
+              }
+              
+              insightElement.textContent = insight;
+            }
+          }, 500);
+        });
+      }
+    });
+  </script>
 </body>
 </html>

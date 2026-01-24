@@ -10,6 +10,9 @@ class CalcPro {
         this.initializeNavigation();
         this.initializeCalculators();
         this.initializeEventListeners();
+        this.initializeAnimations();
+        this.initializeFAQ();
+        this.initializeFilterButtons();
         console.log('CalcPro initialized successfully! 🧮');
     }
 
@@ -52,6 +55,7 @@ class CalcPro {
             hamburger.addEventListener('click', () => {
                 hamburger.classList.toggle('active');
                 navMenu.classList.toggle('active');
+                document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
             });
 
             // Close menu when clicking outside
@@ -59,7 +63,17 @@ class CalcPro {
                 if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
                     hamburger.classList.remove('active');
                     navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
                 }
+            });
+
+            // Close menu when clicking a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
             });
         }
 
@@ -76,25 +90,187 @@ class CalcPro {
                 }
             });
         });
+
+        // Update active nav link based on current page
+        this.updateActiveNavLink();
+    }
+
+    updateActiveNavLink() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href');
+            if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // Animations
+    initializeAnimations() {
+        // Add animation styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .animate-in {
+                animation: fadeInUp 0.6s ease-out forwards;
+            }
+            
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .calculator-card,
+            .feature-card,
+            .tip-card,
+            .step-card,
+            .faq-item {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .calculator-card.animate-in,
+            .feature-card.animate-in,
+            .tip-card.animate-in,
+            .step-card.animate-in,
+            .faq-item.animate-in {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .calc-btn.active {
+                transform: scale(0.95) !important;
+                opacity: 0.8;
+            }
+            
+            .error-notification {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #ef4444;
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                animation: slideIn 0.3s ease;
+            }
+            
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements to animate
+        const elementsToAnimate = document.querySelectorAll(
+            '.calculator-card, .feature-card, .tip-card, .step-card, .faq-item'
+        );
+        
+        elementsToAnimate.forEach(el => {
+            observer.observe(el);
+        });
+    }
+
+    // FAQ Functionality
+    initializeFAQ() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        if (faqItems.length === 0) return;
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            if (question) {
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            }
+        });
+    }
+
+    // Filter Buttons for Features Page
+    initializeFilterButtons() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const featureCards = document.querySelectorAll('.feature-card');
+        
+        if (filterButtons.length === 0) return;
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Filter cards
+                const category = button.getAttribute('data-category');
+                
+                featureCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
     }
 
     // Calculator Initialization
     initializeCalculators() {
-        // Basic calculator is handled directly in basic.html
         this.initializeBasicCalculator();
         this.initializeScientificCalculator();
         this.initializeAgeCalculator();
         this.initializeBMICalculator();
         this.initializeInterestCalculator();
-        this.initializeFeaturesPage();
-        this.initializeHowToPage();
     }
 
-    // Basic Calculator - NEW IMPROVED VERSION
+    // Basic Calculator
     initializeBasicCalculator() {
-    const display = document.getElementById('basic-display');
-    const expressionDisplay = document.getElementById('basic-expression');
-    if (!display || !expressionDisplay) return;
+        const display = document.getElementById('basic-display');
+        const expressionDisplay = document.getElementById('basic-expression');
+        if (!display || !expressionDisplay) return;
 
         let currentValue = '0';
         let previousValue = '';
@@ -172,7 +348,7 @@ class CalcPro {
                     break;
                 case 'divide':
                     if (current === 0) {
-                        alert('Cannot divide by zero');
+                        this.showError('Cannot divide by zero');
                         clearAll();
                         return;
                     }
@@ -244,6 +420,7 @@ class CalcPro {
         document.querySelectorAll('.calc-btn[data-number]').forEach(button => {
             button.addEventListener('click', () => {
                 inputNumber(button.getAttribute('data-number'));
+                this.animateButton(button);
             });
         });
 
@@ -277,6 +454,7 @@ class CalcPro {
                         inputOperation(action);
                         break;
                 }
+                this.animateButton(button);
             });
         });
 
@@ -310,7 +488,11 @@ class CalcPro {
 
         // Initialize display
         updateDisplay();
-        console.log('Basic Calculator initialized successfully!');
+    }
+
+    animateButton(button) {
+        button.classList.add('active');
+        setTimeout(() => button.classList.remove('active'), 150);
     }
 
     // Scientific Calculator
@@ -464,11 +646,9 @@ class CalcPro {
             }
 
             if (funcExpression.includes('**') || funcExpression.includes('%') || funcExpression.includes('/100')) {
-                // For operators, just append to current input
                 currentInput += displayExpression;
                 expression += funcExpression;
             } else if (funcExpression) {
-                // For functions, evaluate immediately
                 try {
                     const result = eval(funcExpression);
                     currentInput = String(result);
@@ -482,19 +662,8 @@ class CalcPro {
             updateDisplay();
         };
 
-        const inputDecimal = () => {
-            if (currentInput === 'Error') return;
-            
-            if (!currentInput.includes('.')) {
-                currentInput += '.';
-                expression += '.';
-            }
-            updateDisplay();
-        };
-
         const calculateExpression = () => {
             try {
-                // Add custom functions to evaluation context
                 const factorial = (n) => {
                     if (n < 0) return NaN;
                     if (n === 0 || n === 1) return 1;
@@ -505,7 +674,6 @@ class CalcPro {
                     return result;
                 };
 
-                // Replace display symbols with JavaScript equivalents
                 let evalExpression = expression
                     .replace(/sin\(/g, 'Math.sin(')
                     .replace(/cos\(/g, 'Math.cos(')
@@ -522,7 +690,6 @@ class CalcPro {
                     .replace(/\^/g, '**')
                     .replace(/mod/g, '%');
 
-                // Handle degree conversion for trigonometric functions
                 if (isDegreeMode) {
                     evalExpression = evalExpression.replace(/(sin|cos|tan)\(([^)]+)\)/g, (match, func, angle) => {
                         return `Math.${func}(${angle} * Math.PI / 180)`;
@@ -601,6 +768,7 @@ class CalcPro {
         document.querySelectorAll('.sci-keys .calc-btn[data-number]').forEach(button => {
             button.addEventListener('click', () => {
                 inputNumber(button.getAttribute('data-number'));
+                this.animateButton(button);
             });
         });
 
@@ -625,6 +793,7 @@ class CalcPro {
                 } else {
                     inputFunction(action);
                 }
+                this.animateButton(button);
             });
         });
 
@@ -674,6 +843,8 @@ class CalcPro {
         if (!calculateBtn) return;
 
         calculateBtn.addEventListener('click', () => {
+            this.animateButton(calculateBtn);
+            
             const birthDate = new Date(document.getElementById('birth-date').value);
             const ageAtDate = document.getElementById('age-at-date').value ? 
                 new Date(document.getElementById('age-at-date').value) : new Date();
@@ -700,7 +871,6 @@ class CalcPro {
 
         if (days < 0) {
             months--;
-            // Get days in previous month
             const prevMonth = new Date(ageAtDate.getFullYear(), ageAtDate.getMonth(), 0);
             days += prevMonth.getDate();
         }
@@ -721,7 +891,6 @@ class CalcPro {
         const resultBox = document.getElementById('age-result');
         resultBox.style.display = 'block';
 
-        // Additional info
         const info = document.getElementById('age-info');
         if (age.years < 1) {
             info.innerHTML = `<p>You are ${age.months} months and ${age.days} days old</p>`;
@@ -749,12 +918,14 @@ class CalcPro {
         });
 
         calculateBtn.addEventListener('click', () => {
+            this.animateButton(calculateBtn);
+            
             const unit = document.querySelector('.unit-btn.active').getAttribute('data-unit');
             let bmi;
 
             if (unit === 'metric') {
                 const weight = parseFloat(document.getElementById('weight-kg').value);
-                const height = parseFloat(document.getElementById('height-cm').value) / 100; // Convert to meters
+                const height = parseFloat(document.getElementById('height-cm').value) / 100;
                 
                 if (!weight || !height || height === 0) {
                     this.showError('Please enter valid weight and height');
@@ -812,7 +983,6 @@ class CalcPro {
         bmiCategory.textContent = category;
         bmiCategory.style.color = color;
         
-        // Scale fill animation
         let fillPercentage = 0;
         if (bmi > 40) fillPercentage = 100;
         else if (bmi < 15) fillPercentage = 0;
@@ -848,6 +1018,8 @@ class CalcPro {
         });
 
         calculateBtn.addEventListener('click', () => {
+            this.animateButton(calculateBtn);
+            
             const principal = parseFloat(document.getElementById('principal').value);
             const rate = parseFloat(document.getElementById('rate').value);
             const years = parseFloat(document.getElementById('years').value) || 0;
@@ -899,55 +1071,78 @@ class CalcPro {
         // Clear previous chart
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        // Simple bar chart
+        // Get device width for responsive sizing
+        const isMobile = window.innerWidth <= 768;
+        const chartWidth = isMobile ? Math.min(300, canvas.parentElement.clientWidth - 40) : 400;
+        const chartHeight = isMobile ? 180 : 200;
+        
+        // Set canvas dimensions
+        canvas.width = chartWidth;
+        canvas.height = chartHeight;
+        
         const total = principal + interest;
-        const principalWidth = (principal / total) * canvas.width;
-        const interestWidth = (interest / total) * canvas.width;
+        const principalWidth = (principal / total) * chartWidth;
+        const interestWidth = (interest / total) * chartWidth;
 
         // Draw principal
         ctx.fillStyle = '#f97316';
-        ctx.fillRect(0, 50, principalWidth, 60);
+        ctx.fillRect(0, 40, principalWidth, 50);
         
         // Draw interest
         ctx.fillStyle = type === 'simple' ? '#10b981' : '#f59e0b';
-        ctx.fillRect(principalWidth, 50, interestWidth, 60);
+        ctx.fillRect(principalWidth, 40, interestWidth, 50);
         
-        // Labels
-        ctx.fillStyle = '#1f2937';
-        ctx.font = '14px Inter';
-        ctx.fillText('Principal', 10, 40);
-        ctx.fillText('Interest', principalWidth + 10, 40);
-        ctx.fillText(`₹${principal.toFixed(2)}`, 10, 130);
-        ctx.fillText(`₹${interest.toFixed(2)}`, principalWidth + 10, 130);
-    }
-
-    // Features Page
-    initializeFeaturesPage() {
-        // Category filtering
-        const categoryTabs = document.querySelectorAll('.category-tab');
-        const featureCards = document.querySelectorAll('.feature-card');
-
-        categoryTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                categoryTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-
-                const category = tab.getAttribute('data-category');
-                
-                featureCards.forEach(card => {
-                    if (category === 'all' || card.getAttribute('data-category') === category) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-    }
-
-    // How To Page
-    initializeHowToPage() {
-        // Add any specific functionality for the How To page
+        // Labels - adjust font size for mobile
+        const fontSize = isMobile ? 12 : 14;
+        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--text-primary') || '#1f2937';
+        ctx.font = `${fontSize}px Inter, sans-serif`;
+        
+        // Center labels
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        
+        // Principal label
+        if (principalWidth > 40) {
+            ctx.fillText('Principal', principalWidth / 2, 20);
+        }
+        
+        // Interest label
+        if (interestWidth > 40) {
+            ctx.fillText('Interest', principalWidth + (interestWidth / 2), 20);
+        }
+        
+        // Values at bottom
+        ctx.font = isMobile ? '11px Inter' : '13px Inter';
+        
+        if (principalWidth > 60) {
+            ctx.fillText(`₹${principal.toFixed(2)}`, principalWidth / 2, chartHeight - 20);
+        }
+        
+        if (interestWidth > 60) {
+            ctx.fillText(`₹${interest.toFixed(2)}`, principalWidth + (interestWidth / 2), chartHeight - 20);
+        }
+        
+        // Add a legend for better understanding
+        const legendY = chartHeight + 25;
+        
+        // Principal legend
+        ctx.fillStyle = '#f97316';
+        ctx.fillRect(10, legendY, 12, 12);
+        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--text-primary') || '#1f2937';
+        ctx.font = isMobile ? '11px Inter' : '12px Inter';
+        ctx.textAlign = 'left';
+        ctx.fillText('Principal Amount', 28, legendY + 6);
+        
+        // Interest legend
+        const legendX = isMobile ? (chartWidth / 2) : (chartWidth / 2) + 20;
+        ctx.fillStyle = type === 'simple' ? '#10b981' : '#f59e0b';
+        ctx.fillRect(legendX, legendY, 12, 12);
+        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--text-primary') || '#1f2937';
+        ctx.fillText(
+            `${type === 'simple' ? 'Simple' : 'Compound'} Interest`, 
+            legendX + 18, 
+            legendY + 6
+        );
     }
 
     // Utility Functions
@@ -968,7 +1163,53 @@ class CalcPro {
     }
 
     initializeEventListeners() {
-        // Add any global event listeners here
+        // Chart responsive resizing
+        const makeChartResponsive = () => {
+            const chartCanvas = document.getElementById('interestChart');
+            if (!chartCanvas) return;
+            
+            const container = chartCanvas.parentElement;
+            const containerWidth = container.clientWidth;
+            
+            // Set canvas width based on container
+            chartCanvas.width = Math.min(400, containerWidth - 40);
+            
+            // Adjust height for mobile
+            if (window.innerWidth <= 768) {
+                chartCanvas.height = 180;
+            } else {
+                chartCanvas.height = 200;
+            }
+            
+            // Redraw chart if data exists
+            if (window.lastInterestData) {
+                const { principal, interest, type } = window.lastInterestData;
+                this.updateInterestChart(principal, interest, type);
+            }
+        };
+
+        // Store last interest data for redrawing
+        window.lastInterestData = null;
+        
+        // Override displayInterestResult to store data
+        const originalDisplayInterestResult = this.displayInterestResult;
+        this.displayInterestResult = (principal, interest, totalAmount, time, type) => {
+            window.lastInterestData = { principal, interest, type };
+            originalDisplayInterestResult.call(this, principal, interest, totalAmount, time, type);
+            setTimeout(makeChartResponsive, 100);
+        };
+
+        // Call on load and resize
+        window.addEventListener('load', makeChartResponsive);
+        window.addEventListener('resize', makeChartResponsive);
+
+        // Also trigger on calculation
+        const calculateBtn = document.getElementById('calculate-interest');
+        if (calculateBtn) {
+            calculateBtn.addEventListener('click', () => {
+                setTimeout(makeChartResponsive, 200);
+            });
+        }
     }
 }
 
@@ -976,29 +1217,3 @@ class CalcPro {
 document.addEventListener('DOMContentLoaded', () => {
     window.calcPro = new CalcPro();
 });
-
-// Add CSS for error notifications
-const style = document.createElement('style');
-style.textContent = `
-    .error-notification {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: #ef4444;
-        color: white;
-        padding: 1rem 1.5rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
-        z-index: 10000;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        animation: slideIn 0.3s ease;
-    }
-    
-    @keyframes slideIn {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-    }
-`;
-document.head.appendChild(style);
