@@ -124,7 +124,36 @@ Result Display & Formatting
 ## 🔗 Demo & Links
 
 **Live Demo:** https://abhi930941.github.io/CalcPro/   
-**GitHub Repository:** [View Source Code](#) *(Add your repo link)*  
+
+**GitHub Repository:** https://github.com/Abhi930941/CalcPro
+
+**Screenshots:** 
+
+<table>
+  <tr>
+    <td><img src="Screenshot 2026-02-19 010124.png" alt="Home Page" /></td>
+    <td><img src="Screenshot 2026-02-19 010238.png" alt="Specialized Calculator" /></td>
+    <td><img src="Screenshot 2026-02-19 011305.png" alt="Scientific Calculator" /></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Home Page</b></td>
+    <td align="center"><b>Specialized Calculator</b></td>
+    <td align="center"><b>Scientific Calculator</b></td>
+  </tr>
+
+  <tr>
+    <td><img src="Screenshot 2026-02-19 010649.png" alt="Age Calculator" /></td>
+    <td><img src="Screenshot 2026-02-19 010821.png" alt=" BMI Calculator" /></td>
+    <td><img src="Screenshot 2026-02-19 010936.png" alt="Interest Calculator" /></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Age Calculator</b></td>
+    <td align="center"><b> BMI Calculator</b></td>
+    <td align="center"><b>Interest Calculator</b></td>
+  </tr>
+</table>
+
+
 
 ---
 
@@ -142,4 +171,4 @@ CalcPro demonstrates practical frontend development skills, including responsive
 **Developer:** Sahani Abhishek  
 **Email:** abhishek242443@gmail.com  
 **LinkedIn:** [linkedin.com/in/abhishek-sahani-447851341](https://www.linkedin.com/in/abhishek-sahani-447851341)  
-
+**Portfolio:** https://abhi930941.github.io/Portfolio/
