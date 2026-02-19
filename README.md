@@ -128,12 +128,11 @@ Result Display & Formatting
 **GitHub Repository:** https://github.com/Abhi930941/CalcPro
 
 **Screenshots:** 
-
 <table>
   <tr>
-    <td><img src="Screenshot 2026-02-19 010124.png" alt="Home Page" /></td>
-    <td><img src="Screenshot 2026-02-19 010238.png" alt="Specialized Calculator" /></td>
-    <td><img src="Screenshot 2026-02-19 011305.png" alt="Scientific Calculator" /></td>
+    <td><img src="screenshots/Screenshot 2026-02-19 010124.png" alt="Home Page" /></td>
+    <td><img src="screenshots/Screenshot 2026-02-19 010238.png" alt="Specialized Calculator" /></td>
+    <td><img src="screenshots/Screenshot 2026-02-19 011305.png" alt="Scientific Calculator" /></td>
   </tr>
   <tr>
     <td align="center"><b>Home Page</b></td>
@@ -142,9 +141,9 @@ Result Display & Formatting
   </tr>
 
   <tr>
-    <td><img src="Screenshot 2026-02-19 010649.png" alt="Age Calculator" /></td>
-    <td><img src="Screenshot 2026-02-19 010821.png" alt=" BMI Calculator" /></td>
-    <td><img src="Screenshot 2026-02-19 010936.png" alt="Interest Calculator" /></td>
+    <td><img src="screenshots/Screenshot 2026-02-19 010649.png" alt="Age Calculator" /></td>
+    <td><img src="screenshots/Screenshot 2026-02-19 010821.png" alt=" BMI Calculator" /></td>
+    <td><img src="screenshots/Screenshot 2026-02-19 010936.png" alt="Interest Calculator" /></td>
   </tr>
   <tr>
     <td align="center"><b>Age Calculator</b></td>
